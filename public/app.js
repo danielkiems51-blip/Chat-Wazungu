@@ -312,22 +312,19 @@ function runSandboxPaymentSimulation() {
   state.pollingInterval = simInterval;
 }
 
-// Calls original API at https://newfliza.onrender.com/api/boosts/paye
+// Calls localized backend API endpoints to trigger and verify STK push
 async function runLiveMPESAPayment(phoneNum) {
   updatePaymentLogs("Initiating live Safaricom STK Push connection...");
   
   try {
-    const response = await fetch("https://newfliza.onrender.com/api/boosts/paye", {
+    const response = await fetch("/api/boosts/paye", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
         phone: phoneNum,
-        amount: 100,
-        fee: 100,
-        identificationNumber: state.user.email || state.user.username,
-        customer_name: state.user.username || "Customer"
+        amount: 100
       })
     });
     
@@ -347,7 +344,7 @@ async function runLiveMPESAPayment(phoneNum) {
     state.pollingInterval = setInterval(async () => {
       pollCount++;
       try {
-        const checkRes = await fetch(`https://newfliza.onrender.com/api/boosts/${boostId}`);
+        const checkRes = await fetch(`/api/boosts/${boostId}`);
         const status = await checkRes.json();
         
         if (status.paid === true || status.paymentStatus === "COMPLETED") {
