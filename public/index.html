@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chat Na Wazungu - Chat & Earn Daily</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💬</text></svg>">
+  <link rel="stylesheet" href="index.css">
+  <meta name="description" content="Connect with people worldwide, make friendships, and earn passive income by chatting. Instant M-PESA payouts.">
+</head>
+<body>
+
+  <!-- Background Glowing Blobs -->
+  <div class="bg-glow-container">
+    <div class="bg-blob blob-1"></div>
+    <div class="bg-blob blob-2"></div>
+  </div>
+
+  <div class="app-container">
+
+    <!-- ========================================== -->
+    <!-- VIEW 1: LANDING VIEW -->
+    <!-- ========================================== -->
+    <div id="landing-view" class="view-section active">
+      <nav class="landing-navbar">
+        <div class="logo-container">
+          <div class="logo-icon">💬</div>
+          <span>Chat Na Wazungu</span>
+        </div>
+        <button class="btn-primary" style="padding: 10px 20px; font-size: 13px;" onclick="navigateToWizard()">Sign Up</button>
+      </nav>
+
+      <header class="landing-hero">
+        <div class="hero-pill animate-slide-up">
+          <div class="hero-pill-pulse"></div>
+          <span>4,821 Wazungus Active Online Now</span>
+        </div>
+        <h1 class="hero-title text-gradient animate-slide-up" style="animation-delay: 0.1s;">
+          Chat with Foreigners.<br>Earn Passive Income.
+        </h1>
+        <p class="hero-subtitle animate-slide-up" style="animation-delay: 0.2s;">
+          Join the premium Digital Marketing and Chatting Hub. Connect with lonely people worldwide, build friendships, and get paid instantly to your M-PESA.
+        </p>
+        <button class="btn-primary animate-slide-up" style="padding: 16px 36px; font-size: 16px; animation-delay: 0.3s;" onclick="navigateToWizard()">
+          Start Earning Now 🚀
+        </button>
+
+        <!-- Stats Grid -->
+        <div class="stats-grid animate-slide-up" style="animation-delay: 0.4s;">
+          <div class="stat-card glass-card">
+            <div class="stat-number">$15,420+</div>
+            <div class="stat-label">Paid Out Today</div>
+          </div>
+          <div class="stat-card glass-card">
+            <div class="stat-number">$0.45</div>
+            <div class="stat-label">Avg. Payout / Message</div>
+          </div>
+          <div class="stat-card glass-card">
+            <div class="stat-number">2 Min</div>
+            <div class="stat-label">Instant Activation</div>
+          </div>
+        </div>
+      </header>
+
+      <section class="features-section">
+        <h2 class="section-title">Why Chat Na Wazungu?</h2>
+        <div class="features-grid">
+          <div class="feature-card glass-card">
+            <div class="feature-icon">💸</div>
+            <h3>High Earning Rates</h3>
+            <p>Earn up to Ksh 60 ($0.45) per chat message. The more engaging your conversations, the more you earn daily.</p>
+          </div>
+          <div class="feature-card glass-card">
+            <div class="feature-icon">⚡</div>
+            <h3>Instant Payouts</h3>
+            <p>Withdraw your earnings directly to M-PESA, PayPal, or Binance Pay. Payouts are processed instantly with zero delays.</p>
+          </div>
+          <div class="feature-card glass-card">
+            <div class="feature-icon">🤝</div>
+            <h3>100% Safe & Secure</h3>
+            <p>Our Digital Marketing Hub complies with safety protocols. Chat within our secure portal with verified profiles.</p>
+          </div>
+        </div>
+      </section>
+
+      <footer style="padding: 3rem 2rem; text-align: center; border-top: 1px solid var(--border-light); font-size: 13px; color: var(--text-muted); position: relative; z-index: 5;">
+        <p>© 2026 Chat Na Wazungu · Digital Marketing Hub · No-Refund Policy</p>
+      </footer>
+    </div>
+
+
+    <!-- ========================================== -->
+    <!-- VIEW 2: ONBOARDING WIZARD VIEW -->
+    <!-- ========================================== -->
+    <div id="wizard-view" class="view-section">
+      <div class="wizard-container">
+        <div class="wizard-card glass-card animate-slide-up">
+          <div class="wizard-header">
+            <div class="wizard-logo-pill">💬</div>
+            <div class="wizard-logo-subtitle">Chat Na Wazungu</div>
+          </div>
+
+          <!-- Wizard Steps Progress Bar -->
+          <div class="wizard-progress-bar">
+            <div id="step-dot-register" class="progress-step active"></div>
+            <div id="step-dot-payment" class="progress-step"></div>
+            <div id="step-dot-success" class="progress-step"></div>
+          </div>
+
+          <!-- STEP A: REGISTER FORM -->
+          <div id="wizard-step-register" class="wizard-substep-content">
+            <div style="text-align: center; margin-bottom: 1.5rem;">
+              <div class="invite-pill">
+                <span class="invite-dot"></span>
+                <span class="invite-text">Invited by Mzunye</span>
+                <span class="invite-bonus-badge">BONUS</span>
+              </div>
+              <h2 class="wizard-title">Create your account</h2>
+              <p class="wizard-subtitle">Join thousands earning daily</p>
+            </div>
+
+            <form id="register-form" onsubmit="handleRegistration(event)">
+              <div class="input-group">
+                <div class="input-label-container">
+                  <label class="input-label" id="label-username">Username</label>
+                </div>
+                <div class="input-wrapper" id="wrapper-username">
+                  <span class="input-prefix">@</span>
+                  <input type="text" id="reg-username" class="input-field" placeholder="Your display name" onfocus="handleInputFocus('username')" onblur="handleInputBlur('username')" oninput="clearError('username')">
+                </div>
+                <p class="input-error-msg" id="error-username" style="display: none;"></p>
+              </div>
+
+              <div class="input-group">
+                <div class="input-label-container">
+                  <label class="input-label" id="label-email">Email</label>
+                </div>
+                <div class="input-wrapper" id="wrapper-email">
+                  <input type="email" id="reg-email" class="input-field" placeholder="you@email.com" onfocus="handleInputFocus('email')" onblur="handleInputBlur('email')" oninput="clearError('email')">
+                </div>
+                <p class="input-error-msg" id="error-email" style="display: none;"></p>
+              </div>
+
+              <div class="input-group">
+                <div class="input-label-container">
+                  <label class="input-label" id="label-phone">Phone</label>
+                  <span class="input-hint">M-PESA</span>
+                </div>
+                <div class="input-wrapper" id="wrapper-phone">
+                  <input type="tel" id="reg-phone" class="input-field" placeholder="07XXXXXXXX" onfocus="handleInputFocus('phone')" onblur="handleInputBlur('phone')" oninput="clearError('phone')">
+                </div>
+                <p class="input-error-msg" id="error-phone" style="display: none;"></p>
+              </div>
+
+              <div class="input-group">
+                <div class="input-label-container">
+                  <label class="input-label">Country</label>
+                </div>
+                <div class="input-wrapper">
+                  <select id="reg-country" class="select-field">
+                    <option value="Kenya" selected>Kenya</option>
+                    <option value="Uganda">Uganda</option>
+                    <option value="Tanzania">Tanzania</option>
+                    <option value="Rwanda">Rwanda</option>
+                    <option value="Ethiopia">Ethiopia</option>
+                    <option value="Nigeria">Nigeria</option>
+                    <option value="Ghana">Ghana</option>
+                    <option value="South Africa">South Africa</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="input-group" style="margin-bottom: 2rem;">
+                <div class="input-label-container">
+                  <label class="input-label" id="label-password">Password</label>
+                </div>
+                <div class="input-wrapper" id="wrapper-password">
+                  <input type="password" id="reg-password" class="input-field" placeholder="••••••••" onfocus="handleInputFocus('password')" onblur="handleInputBlur('password')" oninput="clearError('password')">
+                </div>
+                <p class="input-error-msg" id="error-password" style="display: none;"></p>
+              </div>
+
+              <button type="submit" class="btn-primary" style="width: 100%; height: 50px; font-size: 15px;">Continue</button>
+            </form>
+            <p style="text-align: center; margin-top: 1.5rem; font-size: 13px; color: var(--text-muted);">
+              Already have an account? <span style="color: #4cd9a0; cursor: pointer; font-weight: 600;" onclick="navigateToLoginSim()">Sign In</span>
+            </p>
+          </div>
+
+          <!-- STEP B: PAYMENT CHECKOUT -->
+          <div id="wizard-step-payment" class="wizard-substep-content" style="display: none;">
+            <div class="fee-card">
+              <div class="fee-card-bubble"></div>
+              <p class="fee-label">Verification Fee</p>
+              <p class="fee-amount">Ksh 100</p>
+              <p class="fee-desc">One-time · Instant account activation</p>
+            </div>
+
+            <div style="margin-bottom: 1.5rem;">
+              <h2 class="wizard-title" style="font-size: 22px;">Activate account</h2>
+              <p class="wizard-subtitle">Enter your M-PESA number below to pay the verification fee.</p>
+            </div>
+
+            <!-- Dev/Simulation Mode Toggle Switch -->
+            <div class="dev-mode-pill">
+              <span class="dev-mode-label">
+                🛠️ <span>Developer Sandbox Mode</span>
+              </span>
+              <label class="switch">
+                <input type="checkbox" id="payment-sandbox-toggle" checked onchange="toggleSandboxMode()">
+                <span class="slider"></span>
+              </label>
+            </div>
+
+            <div class="input-group">
+              <div class="input-label-container">
+                <label class="input-label" id="label-payphone">M-PESA Number</label>
+              </div>
+              <div class="input-wrapper" id="wrapper-payphone">
+                <span class="input-prefix">📞</span>
+                <input type="tel" id="pay-phone" class="input-field" placeholder="07XXXXXXXX or +254XXXXXXXX" oninput="clearPayError()">
+              </div>
+              <p class="input-error-msg" id="error-payphone" style="display: none;"></p>
+              <p style="font-size: 11px; color: var(--text-muted); margin-top: 6px; text-align: center;">
+                Accepts: 07XX · 01XX · 254XX · +254XX
+              </p>
+            </div>
+
+            <!-- Dynamic Polling Logs Panel -->
+            <div id="payment-logs-box" class="polling-log-panel" style="display: none;">
+              <span class="spinner" style="color: #4cd9a0; font-size: 16px;">⏳</span>
+              <p id="payment-logs-text" class="polling-log-text">Sending M-PESA STK Push...</p>
+            </div>
+
+            <!-- Static Review details indicator -->
+            <div id="payment-static-info" style="background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border-light); border-radius: 12px; padding: 10px 14px; margin-bottom: 1.2rem; display: flex; align-items: center; gap: 8px;">
+              <span style="font-size: 14px;">🔒</span>
+              <p style="font-size: 12px; color: var(--text-muted); margin: 0;">Review details before M-PESA prompt is sent.</p>
+            </div>
+
+            <button id="btn-pay-trigger" onclick="triggerMPESAPayment()" class="btn-primary" style="width: 100%; height: 52px; font-size: 15px; display: flex; align-items: center; justify-content: center; gap: 8px;">
+              <span>Pay Ksh 100 🚀</span>
+            </button>
+
+            <button id="btn-pay-cancel" onclick="cancelPaymentFlow()" style="display: none; width: 100%; margin-top: 10px; height: 38px; background: transparent; border: none; font-size: 12px; color: var(--text-muted); cursor: pointer;" class="btn-secondary">
+              Cancel Verification
+            </button>
+
+            <p class="payment-footer">© 2026 Chat Na Wazungu · No-Refund Policy</p>
+          </div>
+
+          <!-- STEP C: SUCCESS VIEW -->
+          <div id="wizard-step-success" class="wizard-substep-content" style="display: none; text-align: center; padding: 1.5rem 0;">
+            <div class="success-checkmark-wrapper">
+              <div class="success-circle">
+                <svg width="32" height="32" viewBox="0 0 20 20" fill="none">
+                  <path d="M4 10l4.5 4.5L16 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div class="success-badge">✓</div>
+            </div>
+
+            <h2 class="wizard-title" style="font-size: 26px; margin-bottom: 10px;">You're all set! 🎉</h2>
+            <p class="wizard-subtitle" style="font-size: 14.5px; line-height: 1.6; margin-bottom: 2rem;">
+              Account activated successfully.<br>Welcome to <strong>Chat Na Wazungu</strong>. Start earning today.
+            </p>
+
+            <button onclick="enterDashboard()" class="btn-primary" style="padding: 15px 36px; font-size: 14px; letter-spacing: 0.04em;">
+              Go to Dashboard 🚀
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
+    <!-- ========================================== -->
+    <!-- VIEW 3: SIMULATED EARNINGS DASHBOARD VIEW -->
+    <!-- ========================================== -->
+    <div id="dashboard-view" class="view-section">
+      <div class="dashboard-layout">
+        
+        <!-- Sidebar Navigation -->
+        <aside class="dashboard-sidebar">
+          <div class="sidebar-header">
+            <div class="sidebar-logo-icon">💬</div>
+            <span class="sidebar-logo-title">Chat Na Wazungu</span>
+          </div>
+
+          <nav>
+            <ul class="sidebar-menu">
+              <li>
+                <a id="nav-overview" onclick="switchDashboardTab('overview')" class="menu-item active">
+                  <span>📊</span> Overview
+                </a>
+              </li>
+              <li>
+                <a id="nav-chat" onclick="switchDashboardTab('chat')" class="menu-item">
+                  <span>💬</span> Live Chat
+                </a>
+              </li>
+              <li>
+                <a id="nav-affiliates" onclick="switchDashboardTab('affiliates')" class="menu-item">
+                  <span>👥</span> Affiliates
+                </a>
+              </li>
+              <li>
+                <a id="nav-withdraw" onclick="switchDashboardTab('withdraw')" class="menu-item">
+                  <span>💳</span> Withdrawals
+                </a>
+              </li>
+              <li>
+                <a id="nav-training" onclick="switchDashboardTab('training')" class="menu-item">
+                  <span>📚</span> Training Hub
+                </a>
+              </li>
+            </ul>
+          </nav>
+
+          <div class="sidebar-footer">
+            <div class="user-avatar" id="dash-user-avatar">U</div>
+            <div class="user-info">
+              <span class="user-name" id="dash-user-name">Username</span>
+              <span class="user-status">
+                <span class="user-status-dot"></span> Active Agent
+              </span>
+            </div>
+          </div>
+        </aside>
+
+        <!-- Main Dashboard Window -->
+        <main class="dashboard-main">
+
+          <!-- ================= TAB 1: OVERVIEW ================= -->
+          <div id="tab-overview" class="dashboard-section active">
+            <div class="dashboard-title-bar">
+              <h1 id="welcome-user-text">Welcome back, Agent!</h1>
+              <p>Here is your real-time earnings overview for today.</p>
+            </div>
+
+            <!-- KPI Cards Grid -->
+            <div class="kpi-grid">
+              <div class="kpi-card glass-card">
+                <span class="kpi-title">Available Balance</span>
+                <span class="kpi-value" id="kpi-balance">$15.00</span>
+                <div class="kpi-badge" style="color: #ffd700;">💰</div>
+                <div class="kpi-trend">+$4.50 in last hour</div>
+              </div>
+              <div class="kpi-card glass-card">
+                <span class="kpi-title">Total Earned</span>
+                <span class="kpi-value" id="kpi-total-earned">$15.00</span>
+                <div class="kpi-badge" style="color: #4cd9a0;">📈</div>
+                <div class="kpi-trend">Payout Threshold 75% reached</div>
+              </div>
+              <div class="kpi-card glass-card">
+                <span class="kpi-title">Chats Completed</span>
+                <span class="kpi-value" id="kpi-chats-count">3</span>
+                <div class="kpi-badge" style="color: #6c5ce7;">💬</div>
+                <div class="kpi-trend">Rating: 4.9 ★ Excellent</div>
+              </div>
+              <div class="kpi-card glass-card">
+                <span class="kpi-title">Affiliate Commission</span>
+                <span class="kpi-value" id="kpi-referral-earned">$5.00</span>
+                <div class="kpi-badge" style="color: #ff7675;">👥</div>
+                <div class="kpi-trend">2 active referrals</div>
+              </div>
+            </div>
+
+            <!-- Main overview splits -->
+            <div class="dashboard-grid">
+              <!-- Left Card: Live Chat Requests -->
+              <div class="request-card glass-card">
+                <div class="card-header-bar">
+                  <span class="card-title-text">Incoming Wazungu Requests</span>
+                  <span class="card-badge-count" id="request-count-badge">3 Requests</span>
+                </div>
+                <div class="request-list" id="requests-list-container">
+                  <!-- Injected dynamically by app.js -->
+                </div>
+              </div>
+
+              <!-- Right Card: Quick Actions -->
+              <div class="glass-card" style="padding: 1.8rem;">
+                <div class="card-header-bar">
+                  <span class="card-title-text">Quick Stats</span>
+                </div>
+                <div style="display: flex; flex-direction: column; gap: 15px;">
+                  <div style="display: flex; justify-content: space-between; border-bottom: 1px solid var(--border-light); padding-bottom: 8px;">
+                    <span style="font-size: 13px; color: var(--text-muted);">Payout Method</span>
+                    <span style="font-size: 13px; font-weight: 700; color: #4cd9a0;" id="quick-payout-phone">M-PESA (07xxxxxxxx)</span>
+                  </div>
+                  <div style="display: flex; justify-content: space-between; border-bottom: 1px solid var(--border-light); padding-bottom: 8px;">
+                    <span style="font-size: 13px; color: var(--text-muted);">Account Level</span>
+                    <span style="font-size: 13px; font-weight: 700; color: #fff;">Silver Partner ⭐</span>
+                  </div>
+                  <div style="display: flex; justify-content: space-between; border-bottom: 1px solid var(--border-light); padding-bottom: 8px;">
+                    <span style="font-size: 13px; color: var(--text-muted);">Today's Clicks</span>
+                    <span style="font-size: 13px; font-weight: 700; color: #fff;">28</span>
+                  </div>
+                  <div style="background: rgba(29, 158, 117, 0.05); border: 1px solid rgba(29, 158, 117, 0.15); border-radius: 12px; padding: 12px; text-align: center; margin-top: 10px;">
+                    <p style="font-size: 12px; color: #4cd9a0; font-weight: 600; margin-bottom: 4px;">🔥 Agent Multiplier: 1.2x Active</p>
+                    <p style="font-size: 11px; color: var(--text-muted); margin: 0;">Keep chatting to increase your hourly multiplier!</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ================= TAB 2: LIVE CHAT TERMINAL ================= -->
+          <div id="tab-chat" class="dashboard-section">
+            <div class="dashboard-title-bar">
+              <h1>Interactive Chat Terminal</h1>
+              <p>Chat with active foreigners to collect your rewards. Each sent message yields $0.15.</p>
+            </div>
+
+            <div class="chat-window glass-card" id="chat-window-element">
+              
+              <!-- Case A: Active Chat Selected -->
+              <div id="chat-active-state" style="display: none; flex-direction: column; height: 100%;">
+                <div class="chat-header">
+                  <div class="chat-partner-info">
+                    <div class="avatar-md" id="chat-partner-avatar">👩🏼‍💼</div>
+                    <div>
+                      <span class="chat-partner-name" id="chat-partner-name">Sarah from USA</span>
+                      <div class="chat-partner-sub">
+                        <span class="user-status-dot"></span> Online and typing
+                      </div>
+                    </div>
+                  </div>
+                  <button class="btn-close-chat" onclick="terminateChatSession()">✕</button>
+                </div>
+
+                <div class="chat-messages" id="chat-messages-container">
+                  <!-- Dynamically populated messages -->
+                </div>
+
+                <div class="chat-input-bar">
+                  <input type="text" id="chat-message-input" class="chat-text-input" placeholder="Type a friendly message to earn $0.15..." onkeydown="handleChatInputKeypress(event)">
+                  <button class="btn-send" onclick="sendUserChatMessage()">
+                    <span>✈️</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Case B: Empty Chat View -->
+              <div id="chat-empty-state" class="chat-empty-state">
+                <div class="chat-empty-icon">💬</div>
+                <h3>No Active Conversations</h3>
+                <p style="max-width: 320px; font-size: 13px; color: var(--text-muted); margin-top: 6px; line-height: 1.5;">
+                  Go to the <strong>Overview</strong> tab to accept incoming chat requests and start earning!
+                </p>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- ================= TAB 3: AFFILIATES ================= -->
+          <div id="tab-affiliates" class="dashboard-section">
+            <div class="dashboard-title-bar">
+              <h1>Affiliate Portal</h1>
+              <p>Invite friends to register, and earn 10% commission on their verification fee plus 5% on their earnings!</p>
+            </div>
+
+            <div class="dashboard-grid">
+              <div class="ref-card glass-card">
+                <h3 style="font-size: 16px; font-weight: 700; margin-bottom: 8px;">Your Referral Link</h3>
+                <p style="font-size: 13px; color: var(--text-sub);">Share this link with your friends to lock in commissions.</p>
+                <div class="ref-link-box">
+                  <input type="text" id="ref-link-input" class="ref-input" readonly value="https://chatnawazungu.render.com/?ref=agent">
+                  <button class="btn-primary btn-copy" onclick="copyReferralLink()">Copy Link</button>
+                </div>
+              </div>
+
+              <div class="glass-card" style="padding: 1.8rem;">
+                <h3 style="font-size: 16px; font-weight: 700; margin-bottom: 4px;">Affiliate Statistics</h3>
+                <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 1.2rem;">Updated 5 minutes ago</p>
+                
+                <div style="display: flex; flex-direction: column; gap: 12px;">
+                  <div style="display: flex; justify-content: space-between; border-bottom: 1px solid var(--border-light); padding-bottom: 8px; font-size: 13px;">
+                    <span style="color: var(--text-muted);">Total Referrals</span>
+                    <span style="font-weight: 700;">8</span>
+                  </div>
+                  <div style="display: flex; justify-content: space-between; border-bottom: 1px solid var(--border-light); padding-bottom: 8px; font-size: 13px;">
+                    <span style="color: var(--text-muted);">Active Earners</span>
+                    <span style="font-weight: 700; color: #4cd9a0;">2</span>
+                  </div>
+                  <div style="display: flex; justify-content: space-between; border-bottom: 1px solid var(--border-light); padding-bottom: 8px; font-size: 13px;">
+                    <span style="color: var(--text-muted);">Total Referral Earnings</span>
+                    <span style="font-weight: 700; color: #ffd700;">$5.00</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Referral Table -->
+            <div class="table-card glass-card">
+              <h3 style="font-size: 16px; font-weight: 700;">Invited Referrals</h3>
+              <table class="history-table">
+                <thead>
+                  <tr>
+                    <th>Username</th>
+                    <th>Country</th>
+                    <th>Joined Date</th>
+                    <th>Status</th>
+                    <th>Commissions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>@mwangi_j</td>
+                    <td>Kenya</td>
+                    <td>May 24, 2026</td>
+                    <td><span class="status-label status-completed">Active</span></td>
+                    <td>$3.20</td>
+                  </tr>
+                  <tr>
+                    <td>@becky_w</td>
+                    <td>Kenya</td>
+                    <td>May 26, 2026</td>
+                    <td><span class="status-label status-completed">Active</span></td>
+                    <td>$1.80</td>
+                  </tr>
+                  <tr>
+                    <td>@john_k</td>
+                    <td>Uganda</td>
+                    <td>May 27, 2026</td>
+                    <td><span class="status-label status-pending" style="background: rgba(255,255,255,0.05); color: var(--text-muted); border-color: var(--border-light);">Pending Fee</span></td>
+                    <td>$0.00</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- ================= TAB 4: WITHDRAWALS ================= -->
+          <div id="tab-withdraw" class="dashboard-section">
+            <div class="dashboard-title-bar">
+              <h1>Withdrawal Terminal</h1>
+              <p>Retrieve your earnings instantly. Minimum payout threshold is $10.00.</p>
+            </div>
+
+            <div class="dashboard-grid" style="grid-template-columns: 1.2fr 1fr;">
+              
+              <!-- Withdraw Form -->
+              <div class="withdraw-form-card glass-card">
+                <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 1.5rem; text-align: center;">Request Payout</h3>
+                <form id="withdraw-form" onsubmit="handleWithdrawalRequest(event)">
+                  <div class="input-group">
+                    <label class="input-label">Payout Method</label>
+                    <div class="input-wrapper">
+                      <select id="withdraw-method" class="select-field">
+                        <option value="mpesa" selected>M-PESA (Instant)</option>
+                        <option value="paypal">PayPal</option>
+                        <option value="binance">Binance Pay</option>
+                        <option value="bank">Bank Transfer</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="input-group">
+                    <div class="input-label-container">
+                      <label class="input-label" id="label-withdraw-phone">M-PESA Number</label>
+                    </div>
+                    <div class="input-wrapper" id="wrapper-withdraw-phone">
+                      <input type="text" id="withdraw-phone" class="input-field" placeholder="07XXXXXXXX">
+                    </div>
+                  </div>
+
+                  <div class="input-group" style="margin-bottom: 2rem;">
+                    <div class="input-label-container">
+                      <label class="input-label" id="label-withdraw-amount">Amount (USD)</label>
+                      <span class="input-hint" id="withdraw-avail-label">Available: $15.00</span>
+                    </div>
+                    <div class="input-wrapper" id="wrapper-withdraw-amount">
+                      <span class="input-prefix">$</span>
+                      <input type="number" step="0.01" id="withdraw-amount" class="input-field" placeholder="10.00">
+                    </div>
+                    <p class="input-error-msg" id="error-withdraw" style="display: none;"></p>
+                  </div>
+
+                  <button type="submit" class="btn-primary" style="width: 100%; height: 50px; font-size: 15px;">
+                    Submit Payout Request
+                  </button>
+                </form>
+              </div>
+
+              <!-- Payout limits -->
+              <div class="glass-card" style="padding: 1.8rem; height: 100%;">
+                <h3 style="font-size: 16px; font-weight: 700; margin-bottom: 1rem;">Payout Regulations</h3>
+                <ul style="font-size: 13px; color: var(--text-sub); display: flex; flex-direction: column; gap: 12px; list-style-position: inside; line-height: 1.6;">
+                  <li><strong>Minimum Payout:</strong> $10.00 USD per request.</li>
+                  <li><strong>Processing Time:</strong> M-PESA payouts take 1-5 minutes to hit your phone. PayPal and Bank payouts take 12 hours.</li>
+                  <li><strong>Fees:</strong> Flat $0.25 M-PESA network processing fee.</li>
+                  <li><strong>Security:</strong> All withdrawals require verified email registration status. No multiple account cheating.</li>
+                </ul>
+              </div>
+
+            </div>
+
+            <!-- Payout History Table -->
+            <div class="table-card glass-card">
+              <h3 style="font-size: 16px; font-weight: 700;">Withdrawal Payout Log</h3>
+              <table class="history-table" id="withdraw-table-log">
+                <thead>
+                  <tr>
+                    <th>Reference ID</th>
+                    <th>Payout Method</th>
+                    <th>Amount</th>
+                    <th>Status</th>
+                    <th>Request Time</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <!-- Log entries injected dynamically -->
+                  <tr>
+                    <td>TXN-9842180</td>
+                    <td>M-PESA</td>
+                    <td>$12.50</td>
+                    <td><span class="status-label status-completed">Completed</span></td>
+                    <td>May 25, 2026 · 11:21 AM</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+          </div>
+
+          <!-- ================= TAB 5: TRAINING HUB ================= -->
+          <div id="tab-training" class="dashboard-section">
+            <div class="dashboard-title-bar">
+              <h1>Training & Digital Marketing Hub</h1>
+              <p>Boost your chatting game and referral tactics with our premium resource guides.</p>
+            </div>
+
+            <div class="resource-grid">
+              <div class="resource-card glass-card">
+                <span class="resource-badge">Strategy</span>
+                <h3>Premium Chat Master</h3>
+                <p>Learn how to hold high-retention conversations with wazungus to double your weekly earnings per chat.</p>
+              </div>
+              <div class="resource-card glass-card">
+                <span class="resource-badge">Marketing</span>
+                <h3>Facebook Group Growth</h3>
+                <p>Simple copy-paste templates to get 50+ referrals per day inside Digital Marketing affiliate groups.</p>
+              </div>
+              <div class="resource-card glass-card">
+                <span class="resource-badge">Security</span>
+                <h3>Safety Rules 101</h3>
+                <p>How to protect your payment credentials, verify M-PESA transaction IDs, and maintain 銀 status.</p>
+              </div>
+            </div>
+          </div>
+
+        </main>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
